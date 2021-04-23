@@ -12,18 +12,23 @@ export class AppComponent {
 
   constructor(private formBuilder:FormBuilder,private es:EnrollmentService){}
 
+
 register:any=this.formBuilder.group({
   username:['',Validators.required],
-  phone:['',Validators.required],
+  phone:['',[Validators.required,Validators.min(10)]],
   email:['',[Validators.required,Validators.email]],
 
     address1:['',Validators.required],
     address2:['',Validators.required],
     city:['',Validators.required],
     state:['',Validators.required],
-    postalCode:['',Validators.required]
+    postalCode:['',Validators.required],
+    occupation:['',Validators.required],
+    companyName:['',Validators.required],
+    jobTitle:['',Validators.required]
   
 })
+
 
 
 get email(){
@@ -35,6 +40,15 @@ get phone(){
 get username(){
   return this.register.get('username');
 }
+
+get address1(){
+  return this.register.get('address1');
+}
+
+get address2(){
+  return this.register.get('address2');
+}
+
 
   /*onClick(){
     this.register.patchValue({
